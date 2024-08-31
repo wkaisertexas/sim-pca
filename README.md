@@ -12,6 +12,7 @@ The selected models include:
 - [Phi-3.5-MoE-instruct](https://huggingface.co/microsoft/Phi-3.5-MoE-instruct)
 - [Jamba 1.5 Mini](https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini)
 - [Llama 3.1 Instruct](https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct)
+- [CogVideoX-5b](https://huggingface.co/THUDM/CogVideoX-5b)
 - [Mistral NeMo Minitron](https://huggingface.co/nvidia/Mistral-NeMo-Minitron-8B-Base)
 
 There were the top results (not counting duplicate results) on the day that I looked at the Hugging Face Leaderboards.
