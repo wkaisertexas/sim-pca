@@ -6,6 +6,7 @@ https://huggingface.co/ai21labs/AI21-Jamba-1.5-Mini
 
 from vllm import LLM, SamplingParams
 from transformers import AutoTokenizer
+import torch
 
 model = "ai21labs/AI21-Jamba-1.5-Mini"
 number_gpus = 2
@@ -24,7 +25,9 @@ messages = [
 prompts = tokenizer.apply_chat_template(messages, add_generation_prompt=True, tokenize=False)
 
 sampling_params = SamplingParams(temperature=0.4, top_p=0.95, max_tokens=100) 
-outputs = llm.generate(prompts, sampling_params)
+
+with torch.cuda.nvtx.range("generation"):
+   outputs = llm.generate(prompts, sampling_params)
 
 generated_text = outputs[0].outputs[0].text
 print(generated_text)

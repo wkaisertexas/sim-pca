@@ -1,22 +1,10 @@
-"""
-code used to run:
-
-https://huggingface.co/microsoft/Phi-3.5-MoE-instruct
-"""
-
+# Load model directly
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline 
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
-torch.random.manual_seed(0) 
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3.1-70B-Instruct")
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3.1-70B-Instruct")
 
-model = AutoModelForCausalLM.from_pretrained( 
-    "microsoft/Phi-3.5-MoE-instruct",  
-    device_map="cuda",  
-    torch_dtype="auto",  
-    trust_remote_code=True,  
-) 
-
-tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3.5-MoE-instruct") 
 
 messages = [ 
     {"role": "system", "content": "You are a helpful AI assistant."}, 
@@ -37,6 +25,7 @@ generation_args = {
     "temperature": 0.0, 
     "do_sample": False, 
 } 
+
 
 with torch.cuda.nvtx.range("generation"):
     output = pipe(messages, **generation_args) 
