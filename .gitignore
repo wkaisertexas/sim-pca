@@ -1,2 +1,4 @@
 *.csv
 external
+*.ncu-rep
+.ipynb_checkpoints

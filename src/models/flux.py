@@ -18,7 +18,7 @@ with torch.cuda.nvtx.range("generation"):
         height=1024,
         width=1024,
         guidance_scale=3.5,
-        num_inference_steps=50,
+        num_inference_steps=5, # really small number of steps so profiling is faster
         max_sequence_length=512,
         generator=torch.Generator("cpu").manual_seed(0)
     ).images[0]

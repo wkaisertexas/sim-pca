@@ -6,10 +6,7 @@ torch.set_default_device("cuda")
 model = AutoModelForCausalLM.from_pretrained("microsoft/phi-2", torch_dtype="auto", trust_remote_code=True)
 tokenizer = AutoTokenizer.from_pretrained("microsoft/phi-2", trust_remote_code=True)
 
-inputs = tokenizer('''def print_prime(n):
-   """
-   Print all primes between 1 and n
-   """''', return_tensors="pt", return_attention_mask=False)
+inputs = tokenizer('''What is 1+2?''', return_tensors="pt", return_attention_mask=False)
 
 
 with torch.cuda.nvtx.range("generation"):

@@ -5,8 +5,8 @@ model_slug = "pankajmathur/orca_mini_v7_72b"
 model = AutoModel.from_pretrained(model_slug)
 tokenizer = AutoTokenizer.from_pretrained(model_slug)
 messages = [
-    {"role": "system", "content": "You are Orca Mini, a helpful AI assistant."},
-    {"role": "user", "content": "Hello Orca Mini, what can you do for me?"}
+    {"role": "system", "content": "You are a helpful AI assistant."},
+    {"role": "user", "content": "1 + 2 = "}
 ]
 gen_input = tokenizer.apply_chat_template(messages, return_tensors="pt")
 
